@@ -9,6 +9,12 @@ module.exports = {
     },
     devtool: 'cheap-module-eval-source-map',
     entry: './code/js/index.js',
+    resolve: {
+       alias: {
+         'semantic-ui': path.join(__dirname, "node_modules", "semantic-ui", "dist", "semantic.js"), 
+       },
+       extensions: ['', '.js', '.jsx']
+    },
     module: {
         loaders: [
             {
@@ -27,6 +33,10 @@ module.exports = {
         filename: 'js/bundle.min.js'
     },
     plugins: [
-        new webpack.optimize.OccurrenceOrderPlugin()
+        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery"
+        })
     ]
 };

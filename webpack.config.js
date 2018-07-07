@@ -2,41 +2,28 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
+    entry: './code/js/index.js',
+    output: {
+        path: path.resolve(__dirname, 'src'),
+        filename: 'js/bundle.js'
+        //publicPath: 'src/'
+    },
     devServer: {
         inline: true,
         contentBase: './src',
         port: 3000
+        //overlay: true
     },
-    devtool: 'cheap-module-eval-source-map',
-    entry: './code/js/index.js',
-    resolve: {
-       alias: {
-         'semantic-ui': path.join(__dirname, "node_modules", "semantic-ui", "dist", "semantic.js"), 
-       },
-       extensions: ['', '.js', '.jsx']
-    },
-    module: {
-        loaders: [
+    module:{
+        rules:[   //загрузчик для jsx
             {
-                test: /\.js$/,
-                loaders: ['babel'],
-                exclude: /node_modules/
-            },
-            {
-                test: /\.scss/,
-                loader: 'style-loader!css-loader!sass-loader'
+                test: /\.jsx?$/, // определяем тип файлов
+                exclude: /(node_modules)/,  // исключаем из обработки папку node_modules
+                loader: "babel-loader",   // определяем загрузчик
+                options:{
+                    presets:["env", "react"]    // используемые плагины
+                }
             }
         ]
-    },
-    output: {
-        path: 'src',
-        filename: 'js/bundle.min.js'
-    },
-    plugins: [
-        new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        })
-    ]
+    }
 };

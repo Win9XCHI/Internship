@@ -6,22 +6,20 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'src'),
         filename: 'js/bundle.js'
-        //publicPath: 'src/'
     },
     devServer: {
         inline: true,
         contentBase: './src',
         port: 3000
-        //overlay: true
     },
     module:{
-        rules:[   //загрузчик для jsx
+        rules:[   
             {
-                test: /\.jsx?$/, // определяем тип файлов
-                exclude: /(node_modules)/,  // исключаем из обработки папку node_modules
-                loader: "babel-loader",   // определяем загрузчик
+                test: /\.jsx?$/, 
+                exclude: /(node_modules)/,  
+                loader: "babel-loader",  
                 options:{
-                    presets:["env", "react"]    // используемые плагины
+                    presets:["env", "react"]   
                 }
             }
         ]

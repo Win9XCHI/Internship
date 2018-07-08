@@ -3,7 +3,7 @@ import {Grid} from 'semantic-ui-react';
 import PeopleList from '../containers/People-list';
 
 const Panel = () => (
-        <Grid.Column width={4}>
+        <Grid.Column width={6}>
             <PeopleList /> 
         </Grid.Column>
 );

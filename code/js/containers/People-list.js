@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-import {bindActiveCreators} from 'redux';
+import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {Menu,Input,Image, List} from 'semantic-ui-react';
+import {Input,Image, List} from 'semantic-ui-react';
+import {Select} from '../actions/index';
 
 class PeopleList extends Component {
     show () {
         return this.props.peoples.map ((people, index) => {
             return(
-                <List.Item key={index}>
+                <List.Item onClick={() => this.props.onSelect(people)} key={index} name={people.general.firstName + people.general.lastName}>
                   <Image avatar src={people.general.avatar} />
                   <List.Content>
                     <List.Header>{people.general.firstName}</List.Header>
@@ -33,4 +34,8 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(PeopleList);
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({onSelect: Select}, dispatch);
+}
+
+export default connect(mapStateToProps, matchDispatchToProps)(PeopleList);

@@ -1,5 +1,5 @@
 import {combineReducers} from 'redux';
-import {masPeople} from './People';
+import masPeople from './People';
 
 const Reducers = combineReducers( {
     people: masPeople

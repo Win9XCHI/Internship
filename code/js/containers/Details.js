@@ -14,10 +14,10 @@ class Details extends Component {
         return (
             <Grid>
              <Grid.Row>
-              <Grid.Column width={4}>
-                  <Image src={this.props.people.general.avatar} />
+              <Grid.Column width={5}>
+                  <Image fluid src={this.props.people.general.avatar} />
                 </Grid.Column>
-                <Grid.Column width={12}>
+                <Grid.Column width={11}>
                   <Message>
                     <Message.Header>{this.props.people.general.firstName + " " + this.props.people.general.lastName}</Message.Header>
                     <p>

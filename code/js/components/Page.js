@@ -1,10 +1,13 @@
 import React from 'react';
-import {Header} from 'semantic-ui-react';
+import { Grid, Menu, Segment, Input } from 'semantic-ui-react';
+import Panel from './Panel';
+import Details from './Details';
 
 const Page = () => (
-    <Header as='h3'>
-  Learn More
-</Header>
-);
+      <Grid>
+        <Panel />
 
+        <Details />
+      </Grid>
+);
 export default Page;

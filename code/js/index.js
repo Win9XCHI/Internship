@@ -8,7 +8,8 @@ import Page from './components/Page';
 const store = createStore(Reducers);
 
 ReactDOM.render(
-  //<h2>Test</h2>, 
-  <Page />,
+  <Provider store={store}>
+    <Page />
+  </Provider>,
   document.getElementById('DisplayArea')
 );

@@ -1,19 +1,10 @@
 import React from 'react';
-import { Grid, Menu, Input } from 'semantic-ui-react';
+import {Grid} from 'semantic-ui-react';
+import PeopleList from '../containers/People-list';
 
 const Panel = () => (
         <Grid.Column width={4}>
-          <Menu fluid vertical tabular>
-            <Input icon='users' iconPosition='left' placeholder='Search people...' />
-            <Menu.Item name='bio' />
-            <Menu.Item name='pics' />
-            <Menu.Item
-              name='companies'
-            />
-            <Menu.Item
-              name='links'
-            />
-          </Menu>
+            <PeopleList /> 
         </Grid.Column>
 );
 export default Panel;

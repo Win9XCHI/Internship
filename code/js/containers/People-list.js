@@ -2,13 +2,19 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Input,Image, List} from 'semantic-ui-react';
-import {Select} from '../actions/index';
+import {Select, SearchPeople} from '../actions/index';
+import PeopleSearch from './People-search';
 
 class PeopleList extends Component {
     show () {
         return this.props.peoples.map ((people, index) => {
             return(
-                <List.Item onClick={() => this.props.onSelect(people)} key={index} name={people.general.firstName + people.general.lastName}>
+                <List.Item 
+                onClick={() => this.props.onSelect(people, "")} 
+                    key={index} 
+                    name={people.general.firstName + people.general.lastName}
+                    id={index}
+                >
                   <Image avatar src={people.general.avatar} />
                   <List.Content>
                     <List.Header>{people.general.firstName}</List.Header>
@@ -21,7 +27,14 @@ class PeopleList extends Component {
     render () {
         return (
             <List celled size='big'>
-                <Input icon='users' fluid iconPosition='left' placeholder='Search people...' />
+            <Input 
+                    icon='users' 
+                    fluid 
+                    iconPosition='left' 
+                    placeholder='Search people...' 
+                    id="Search" 
+                    onChange={() => this.props.onSearch(this.props.peoples, document.getElementById("Search").value)}
+                />
                 {this.show()}
             </List>
         );
@@ -35,7 +48,7 @@ function mapStateToProps(state) {
 }
 
 function matchDispatchToProps(dispatch) {
-    return bindActionCreators({onSelect: Select}, dispatch);
+    return bindActionCreators({onSelect: Select, onSearch: SearchPeople}, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(PeopleList);

@@ -3,7 +3,6 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {Input,Image, List} from 'semantic-ui-react';
 import {Select, SearchPeople} from '../actions/index';
-import PeopleSearch from './People-search';
 
 class PeopleList extends Component {
     show () {
